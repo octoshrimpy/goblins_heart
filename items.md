@@ -190,7 +190,6 @@ todo
   * doodad
   * whatsit
 
-
 * mushrooms:
   * coal jelly
   * winter horn
@@ -226,7 +225,120 @@ todo
 ---
 
 # cooking
-  
+* food
+  * main course
+    * [0] plate with [...]
+    * steamed []
+    * fried []
+    * baked []
+    * grilled []
+    * sauteed []
+    * [] skewer
+    * [] soup
+    * [] meal
+    * [] stirfry
+    * [] bowl
+    * [] stew
+    * [] roast
+    * [] quiche
+    * [] risotto
+    * [] salad
+    * [] sandwich
+    * [] pizza
+    * [] burger
+    * [] chowder
+    * [] chili
+    * specific meals
+      * sushi
+      * risotto
+      * scrambled eggs
+      * hardboiled egg
+  * dessert
+    * pie
+    * pudding
+    * tart
+    * cake
+    * crepe
+    * candy
+    * treat
+    * fritter
+  * bread
+* drink
+  * potion
+    * health
+    * speed
+    * ice resistance
+    * heat resistance
+    * poison resistance
+    * corruption resistance
+    * jump
+  * juice
+  * tonic
+  * ale
+  * mead (needs honey)
+  * wine
+  * beer
+  * grog
+  * tea
+
+
+
 ---
 
 # crafting
+
+* material
+  * soft
+    * moss
+    * grass
+    * fabric
+    * leather
+    * seaweed
+  * raw
+    * stone
+    * bone
+    * wood
+    * antler
+  * fired
+    * ceramic
+    * brass
+    * copper
+    * iron
+    * tin
+
+* item
+  * spoon
+  * fork
+  * knife
+  * spork
+  * bowl
+  * kettle
+  * pendant
+  * sculpture
+  * necklace
+  * trinket
+  * bracelet
+  * ring
+  * earrings
+  * chest
+  * lockbox
+  * dreamcatcher
+  * staff
+  * waterskin
+  * pouch
+  * herbal medicine
+  * energy mix
+  * terrarium
+  * flower pot
+  * lantern
+  * chandelier
+  * candle
+  * scented candle
+  * lamp
+  * torch
+  * paint
+  * armor
+    * armguards
+    * pauldron
+    * breastplate
+    * leggings

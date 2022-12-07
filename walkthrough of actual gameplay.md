@@ -90,10 +90,86 @@ note blocks:
 1. lights for exploring
   * have to carry a torch for the first bit of the game
   * after enough money, you can puchase a lantern 
-  * lantern hasbigger light range, and shinies glow from farther away
+  * lantern has bigger light range, and shinies glow from farther away
   * bug lantern: captured glowy bugs, of various colors for fun lighting
 
 2. farming
   * some plants need sunlight
   * light from torches, lanterns, or glowing bugs in glass bulbs
   * no-light variants can be created
+
+3. waypoints
+  * waypoints can be turned on and off
+  * turned off from home or in-situ
+  * turned on in-situ
+  * compass points to nearest waypoint
+  * turn on waypoints as you expore
+  * then turn them off as you head back
+
+---
+
+# thoughts
+
+> skill trees
+build out skills
+find someone else to do it and level up their skills?
+
+> movement
+crawl: why?
+roll: to avoid damage (iframes)
+fall damage?
+double jump?
+grappling gun?
+slime boots?
+fast travel?
+
+> map
+view waypoints and visited terrain like antiqueAtlas
+add custom pins
+show rough sketch of:
+  * areas seen but not been in
+  * areas told about by someone else
+
+> notebook
+houses compendium
+  * items
+  * baddies
+  * friends
+  * quests
+  * map 
+  * notes?
+
+>light source
+torches? should goblins avoid fire?
+use mushrooms, jar fireflies and magic stones instead?
+
+> farming
+require seeds
+require water
+require light
+merge attributes by cross-breeding?
+no plant can have all 3: 
+  * make seeds
+  * make water
+  * make light
+
+> crossbreeding
+extract essence of plant
+  * base of seed
+  * essence of chance
+combine essences into seed bases
+ability to make a blank seed?
+
+> waypoints
+states: broken, disabled, active 
+notebook stores which waypoints you've visited
+"write down in notebook" animation when fixing a waypoint
+why are they all broken?
+how would you disable them from home?
+
+> 
+
+---
+
+* sidescroller platformer on main world
+* top down view "indoors" within rooms
