@@ -106,6 +106,22 @@ note blocks:
   * turn on waypoints as you expore
   * then turn them off as you head back
 
+4. environmental changes
+  * place out breadcrumbs for pigeons
+  * throw wildflower seeds for flower patches
+  * throw grass seeds for grass patches
+  * fertilize soil to grow random plant native to area
+  * throw out breadcrumbs into water for fish friends
+
+5. plantables textures
+  | part   | use   | no need | needs | makes |
+  |--------|-------|---------|-------|-------|
+  | leaves | water | x       | -     | -     |
+  | stem   | light | -       | x     | -     |
+  | fruit  | seeds | -       | -     | x     |
+
+1
+
 ---
 
 # thoughts
