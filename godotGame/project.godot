@@ -9,6 +9,21 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "Ladder",
+"language": "GDScript",
+"path": "res://World/Ladder.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Player/Player.gd"
+}, {
+"base": "Resource",
+"class": "PlayerMovementData",
+"language": "GDScript",
+"path": "res://Player/PlayerMovementData.gd"
+}, {
 "base": "Resource",
 "class": "RMS2D_Material",
 "language": "GDScript",
@@ -145,6 +160,9 @@ _global_script_classes=[ {
 "path": "res://addons/rmsmartshape/vertex_properties.gd"
 } ]
 _global_script_class_icons={
+"Ladder": "",
+"Player": "",
+"PlayerMovementData": "",
 "RMS2D_Material": "",
 "RMS2D_VertexProperties": "",
 "RMS2D_VertexPropertiesArray": "",
@@ -177,11 +195,17 @@ _global_script_class_icons={
 [application]
 
 config/name="goblin's heart"
+run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Events="*res://Events.gd"
+SoundPlayer="*res://Assets/Sounds/SoundPlayer.tscn"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/gut/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [gui]
 
@@ -217,4 +241,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+2d/snapping/use_gpu_pixel_snap=true
 environment/default_environment="res://default_env.tres"
