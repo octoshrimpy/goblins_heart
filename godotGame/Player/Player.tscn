@@ -102,9 +102,8 @@ animations = [ {
 "speed": 20.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=24]
-radius = 8.0
-height = 18.0
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 5.5, 16.75 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 125.52, -543.617 )
@@ -117,11 +116,10 @@ moveData = ExtResource( 3 )
 position = Vector2( 0, -24 )
 frames = SubResource( 16 )
 animation = "Idle"
-frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.519997, -19.383 )
+position = Vector2( -0.0199966, -21.133 )
 shape = SubResource( 24 )
 
 [node name="LadderCheck" type="RayCast2D" parent="."]

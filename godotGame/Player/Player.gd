@@ -5,6 +5,17 @@ enum { MOVE, CLIMB }
 
 export(Resource) var moveData = preload("res://Player/DefaultPlayerMovementData.tres") as PlayerMovementData
 
+#SLOPE FIX STUFF
+const FLOOR_NORMAL = Vector2.UP
+const SNAP_DIRECTION = Vector2.DOWN
+const SNAP_LENGTH = 32.0
+const snapping = SNAP_DIRECTION * SNAP_LENGTH
+const not_snapping = Vector2(0, 0)
+
+#Change to 0 to stop snap for jumps, then back for snaps
+var snap_vector = snapping
+##
+
 var velocity = Vector2.ZERO
 var state = MOVE
 var double_jump = 1
@@ -73,9 +84,11 @@ func move_state(input, delta):
 	
 #	if was_in_air and is_on_floor() and velocity.x <= 0:
 #		set_idle()
-	
-	velocity = move_and_slide(velocity, Vector2.UP, true)
-	
+
+	#OLD WORKING
+#	velocity = move_and_slide(velocity, FLOOR_NORMAL, true)
+	#NEW
+	velocity.y = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, true).y
 	player_brake()
 	
 	
@@ -131,11 +144,22 @@ func connect_camera(camera):
 func player_brake():
 	if Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
 		velocity.x = 0
+func jump():
+	snap_vector = not_snapping
+	SoundPlayer.play_sound(SoundPlayer.JUMP)
+	#may need to account for variable jump height below
+	velocity.y = moveData.JUMP_FORCE
+	double_jump -= 1
+	yield(get_tree().create_timer(.01), 'timeout')
+	snap_vector = snapping
+	
+	
 func pogo_jump():
 	if is_on_floor() and Input.is_action_pressed("ui_up") and can_jump():
-		SoundPlayer.play_sound(SoundPlayer.JUMP)
-		velocity.y = moveData.JUMP_FORCE
-		double_jump -= 1
+		jump()
+#		SoundPlayer.play_sound(SoundPlayer.JUMP)
+#		velocity.y = moveData.JUMP_FORCE
+#		double_jump -= 1
 func input_jump_release():
 	if Input.is_action_just_released("ui_up") and velocity.y < moveData.JUMP_RELEASE_FORCE:
 		velocity.y = moveData.JUMP_RELEASE_FORCE
