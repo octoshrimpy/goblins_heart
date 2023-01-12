@@ -116,6 +116,7 @@ moveData = ExtResource( 3 )
 position = Vector2( 0, -24 )
 frames = SubResource( 16 )
 animation = "Idle"
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -140,3 +141,5 @@ position = Vector2( 0.480003, -23.383 )
 [node name="IdleReset" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[connection signal="timeout" from="CoyoteJumpTimer" to="." method="_on_CoyoteJumpTimer_timeout"]

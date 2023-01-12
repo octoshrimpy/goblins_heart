@@ -715,6 +715,7 @@ script = ExtResource( 3 )
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 10787, 1833 )
 scale = Vector2( 19.5476, 19.5476 )
+z_index = -3
 texture = ExtResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -728,6 +729,7 @@ tile_data = PoolIntArray( 6619118, 1, 0, 6619119, 1, 0, 6619120, 1, 0, 6684657, 
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 616, 232 )
+z_index = 1
 
 [node name="Timer" type="Timer" parent="."]
 
