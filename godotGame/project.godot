@@ -195,13 +195,14 @@ _global_script_class_icons={
 [application]
 
 config/name="goblin's heart"
-run/main_scene="res://world.tscn"
+run/main_scene="res://MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Events="*res://Events.gd"
 SoundPlayer="*res://Assets/Sounds/SoundPlayer.tscn"
+SceneTransitionRect="*res://SceneTransitionRect.tscn"
 
 [editor_plugins]
 

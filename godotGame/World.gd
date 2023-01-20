@@ -16,6 +16,8 @@ func _ready():
 	Events.connect("player_died", self, "_on_player_died")
 	Events.connect("hit_checkpoint", self, "_on_hit_checkpoint")
 	print(player_spawn_location)
+	#Fade out box from transition 
+	SceneTransitionRect.transit_fade_out()
 func _on_player_died():
 	print(player_spawn_location)
 	timer.start(1.0)

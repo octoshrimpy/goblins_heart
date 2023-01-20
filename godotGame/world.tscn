@@ -713,6 +713,7 @@ points = PoolVector2Array( 32, 16, 16, 32, 0, 32, 0, 0, 32, 0 )
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( 10787, 1833 )
 scale = Vector2( 19.5476, 19.5476 )
 z_index = -3
