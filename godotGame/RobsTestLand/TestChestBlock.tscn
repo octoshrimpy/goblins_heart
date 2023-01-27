@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://tiles_packed.png" type="Texture" id=1]
+[ext_resource path="res://RobsTestLand/TestChestBlock.gd" type="Script" id=2]
+[ext_resource path="res://ContextPrompt.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="TestChestBlock" type="StaticBody2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 198, 18, 18, 18 )
+
+[node name="ContextPrompt" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContextPrompt"]
+shape = SubResource( 1 )

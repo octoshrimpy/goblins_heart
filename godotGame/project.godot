@@ -9,10 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "StaticBody2D",
+"class": "CHEST",
+"language": "GDScript",
+"path": "res://RobsTestLand/TestChestBlock.gd"
+}, {
 "base": "Area2D",
 "class": "Ladder",
 "language": "GDScript",
 "path": "res://World/Ladder.gd"
+}, {
+"base": "StaticBody2D",
+"class": "NPC",
+"language": "GDScript",
+"path": "res://RobsTestLand/TestNPCBlock.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -160,7 +170,9 @@ _global_script_classes=[ {
 "path": "res://addons/rmsmartshape/vertex_properties.gd"
 } ]
 _global_script_class_icons={
+"CHEST": "",
 "Ladder": "",
+"NPC": "",
 "Player": "",
 "PlayerMovementData": "",
 "RMS2D_Material": "",
