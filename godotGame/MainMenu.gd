@@ -2,8 +2,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#		SoundPlayer.play_bgm(SoundPlayer.BGM_MENU)
-	pass
+		SoundPlayer.play_BGM()
 
 ##Use this to keep menu music looping, or add more music to change up menu music
 #func _process(delta):
