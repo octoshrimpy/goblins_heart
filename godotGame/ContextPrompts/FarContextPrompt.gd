@@ -8,7 +8,7 @@ func _on_ProximityContextPrompt_body_entered(body):
 		print('NPC proximity context')
 	elif parent_context is CHEST:
 		print('Chest proximity Context')
-		parent_context.show_arrow()
+		parent_context.glow()
 #	elif parent_context is PLAYER_OBSERVATION:
 #		print('Player makes a remark about what they observed')
 	else: pass
@@ -22,7 +22,7 @@ func _on_ProximityContextPrompt_body_exited(body):
 		print('NPC proximity context')
 	elif parent_context is CHEST:
 		print('Chest proximity Context')
-		parent_context.hide_arrow()
+		parent_context.not_glow()
 #	elif parent_context is PLAYER_OBSERVATION:
 #		print('Player makes a remark about what they observed')
 	else: pass

@@ -715,7 +715,7 @@ points = PoolVector2Array( 32, 16, 16, 32, 0, 32, 0, 0, 32, 0 )
 script = ExtResource( 3 )
 
 [node name="TestChestBlock" parent="." instance=ExtResource( 8 )]
-position = Vector2( 676, 223 )
+position = Vector2( 631, 239 )
 
 [node name="TestNPCBlock" parent="." instance=ExtResource( 7 )]
 position = Vector2( 783, 200 )
