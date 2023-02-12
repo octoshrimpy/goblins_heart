@@ -14,6 +14,8 @@ func signalCorps():
 
 #Connect and listen (observe) for signal, and callback if true
 func _ready():
+	#safety check to make sure signal isn't already connected; prevents p[otential
+	#non-crashing memory leak error.
 	if not Events.is_connected("signalName", self, "_callbackMethodName"):
 			Events.connect("signalName", self, "_callbackMethodName")
 			print('connected signal')

@@ -215,6 +215,7 @@ config/icon="res://icon.png"
 Events="*res://Events.gd"
 SoundPlayer="*res://Assets/Sounds/SoundPlayer.tscn"
 SceneTransitionRect="*res://SceneTransitionRect.tscn"
+Chronos="*res://Singletons/Chronos.gd"
 
 [editor_plugins]
 
