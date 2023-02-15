@@ -37,6 +37,7 @@ export var this_plant = {
 }
 
 func _ready():
+	randomize()
 	#connects to Chronos singleton signals, with a saftey check to avoid memory leaks
 	if not Chronos.is_connected("clock_tick", self, "_on_timer_tick"):
 		Chronos.connect("clock_tick", self, "_on_timer_tick")
@@ -49,26 +50,31 @@ func rng_0_to_10() -> int:
 	var choice : int = rng.randi_range(0, 10)
 	print(choice)
 	return choice
-
+func randomized_growth_success_roll() -> bool:
+	var choice : int = rng.randi_range(0, 10)
+	print('random growth roll', choice)
+	return (choice > 3)
+	
 func slow_grow_speed_success_check() -> bool:
-	var choice = rng_0_to_10()
+	var choice : int = rng.randi_range(0, 10)
 	print(choice)
 	return choice > 3
 
 func try_grow(speed : int) -> void:
-	var growTick = (rng_0_to_10() > 5)
+	var growTick = (rng.randi_range(0, 10) > 5)
 	if growTick:
-		if (this_plant.stage_type == GROWTH_STAGES.SIX_STAGE and speed == GROWTH_SPEED.FAST):
-			grow_bigger_6_stage()
-			update_size_6_stage()
-		elif (this_plant.stage_type == GROWTH_STAGES.SIX_STAGE and speed == GROWTH_SPEED.SLOW):
-			if (slow_grow_speed_success_check()):
+		if randomized_growth_success_roll():
+			if (this_plant.stage_type == GROWTH_STAGES.SIX_STAGE and speed == GROWTH_SPEED.FAST):
 				grow_bigger_6_stage()
 				update_size_6_stage()
-			else: 
-				print('failed slow grow second check')
-		else:
-			print('Invalid Enum value for plant_stage_type / GROWTH_SPEED')
+			elif (this_plant.stage_type == GROWTH_STAGES.SIX_STAGE and speed == GROWTH_SPEED.SLOW):
+				if (slow_grow_speed_success_check()):
+					grow_bigger_6_stage()
+					update_size_6_stage()
+				else: 
+					print('failed slow grow second check')
+			else:
+				print('Invalid Enum value for plant_stage_type / GROWTH_SPEED')
 	else: 
 		print('no luck this time, tick')
 	

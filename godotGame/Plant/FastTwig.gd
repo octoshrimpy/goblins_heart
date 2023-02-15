@@ -1,5 +1,4 @@
 extends Area2D
-
 #var interactable : bool = false
 #var has_berries : bool = false
 

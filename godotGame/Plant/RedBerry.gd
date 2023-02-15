@@ -52,17 +52,17 @@ func rng_0_to_10() -> int:
 	return choice
 
 func randomized_growth_success_roll() -> bool:
-	var choice : int = rng.randi_range(0, 10)
+	var choice = rng_0_to_10()
 	print('random growth roll', choice)
 	return (choice > 3)
 	
 func slow_grow_speed_success_check() -> bool:
-	var choice : int = rng.randi_range(0, 10)
+	var choice = rng_0_to_10()
 	print(choice)
 	return choice > 3
 
 func try_grow(speed : int) -> void:
-	var growTick = (rng.randi_range(0, 10) > 5)
+	var growTick = (rng_0_to_10() > 5)
 	if growTick:
 		if randomized_growth_success_roll():
 			if (this_plant.stage_type == GROWTH_STAGES.SIX_STAGE and speed == GROWTH_SPEED.FAST):
