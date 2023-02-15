@@ -30,7 +30,7 @@ enum GROWTH_STAGES {
 
 export var this_plant = {
 	stage_type = GROWTH_STAGES.SIX_STAGE,
-	growth_speed_modifer = GROWTH_SPEED.SLOW,
+	growth_speed_modifer = GROWTH_SPEED.FAST,
 	growth_stage = GROWTH.JUST_PLANTED,
 	interactable = false,
 	has_berries = false,

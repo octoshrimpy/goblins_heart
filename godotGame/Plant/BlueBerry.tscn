@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Plant/Plant.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/plants.png" type="Texture" id=2]
+[ext_resource path="res://Plant/PlantFast.gd" type="Script" id=3]
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=12]
+resource_local_to_scene = true
+animations = [ {
+"frames": [ SubResource( 13 ) ],
+"loop": true,
+"name": "FruitGrowth1",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 14 ) ],
+"loop": true,
+"name": "FruitGrowth2",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 15 ) ],
+"loop": true,
+"name": "FruitGrowth3",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "Growth1",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ) ],
+"loop": true,
+"name": "Growth2",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ) ],
+"loop": true,
+"name": "Growth3",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 8 ) ],
+"loop": true,
+"name": "JustPlanted",
+"speed": 5.0
+} ]
+
+[node name="BlueBerry" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+this_plant = {
+"growth_speed_modifer": 1,
+"growth_stage": 0,
+"has_berries": false,
+"interactable": false,
+"stage_type": 0
+}
+
+[node name="Plant6StageGrowth" parent="." index="1"]
+frames = SubResource( 12 )
