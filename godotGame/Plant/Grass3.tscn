@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/plants.png" type="Texture" id=1]
 [ext_resource path="res://Plant/Plant.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Plant/Grass3.gd" type="Script" id=3]
+[ext_resource path="res://Plant/PlantSlow.gd" type="Script" id=3]
 
 [sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 1 )
@@ -73,13 +73,6 @@ animations = [ {
 
 [node name="Grass3" instance=ExtResource( 2 )]
 script = ExtResource( 3 )
-this_plant = {
-"growth_speed_modifer": 1,
-"growth_stage": 0,
-"has_berries": false,
-"interactable": false,
-"stage_type": 0
-}
 
 [node name="Plant6StageGrowth" parent="." index="1"]
 frames = SubResource( 22 )

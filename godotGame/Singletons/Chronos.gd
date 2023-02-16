@@ -6,7 +6,7 @@ signal day_cycle_update
 
 export var current_time : int = 12
 var is_day : bool = true
-
+var rng = RandomNumberGenerator.new()
 func _ready():
 		if not is_connected("clock_tick", self, "_on_timer_tick"):
 			connect("clock_tick", self, "_on_timer_tick")
@@ -29,7 +29,8 @@ func update_clock():
 		emit_signal("clock_updated")
 	else: 
 		pass
-
+func rng_0_to_10():
+	return rng.randi_range(0, 10)
 #May cause bug of too many signals
 func update_is_day():
 	if current_time > 10:

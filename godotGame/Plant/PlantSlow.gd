@@ -45,23 +45,27 @@ func _ready():
 	if not Chronos.is_connected("clock_updated", self, "_on_clock_update"):
 		Chronos.connect("clock_updated", self, "_on_clock_update")
 		print('connected signal clock updated')
-
+func test():
+	var choice = rng.randi_range(0, 10)
+	print("TEST", 'var:', choice, 'raw:', Chronos.rng_0_to_10())
+	
 func rng_0_to_10() -> int:
-	var choice : int = rng.randi_range(0, 10)
-	print(choice)
+	var choice : int = Chronos.rng_0_to_10()
+	print('first roll: ', choice)
 	return choice
+
 func randomized_growth_success_roll() -> bool:
-	var choice : int = rng.randi_range(0, 10)
-	print('random growth roll', choice)
+	var choice : int = Chronos.rng_0_to_10()
+	print('random growth roll: ', choice)
 	return (choice > 3)
 	
 func slow_grow_speed_success_check() -> bool:
-	var choice : int = rng.randi_range(0, 10)
-	print(choice)
+	var choice : int = Chronos.rng_0_to_10()
+	print('slow grow check: ', choice)
 	return choice > 3
 
 func try_grow(speed : int) -> void:
-	var growTick = (rng.randi_range(0, 10) > 5)
+	var growTick = (Chronos.rng_0_to_10() > 5)
 	if growTick:
 		if randomized_growth_success_roll():
 			if (this_plant.stage_type == GROWTH_STAGES.SIX_STAGE and speed == GROWTH_SPEED.FAST):
@@ -107,41 +111,44 @@ func grow_bigger_6_stage():
 			GROWTH.FRUIT_GROWTH_2:
 				this_plant.growth_stage = GROWTH.FRUIT_GROWTH_3
 			GROWTH.FRUIT_GROWTH_3:
-				print('can"t grow bigger; fully grown')
+				pass
+#				print('can"t grow bigger; fully grown')
 
 func update_size_6_stage():
 	match this_plant.growth_stage:
 			GROWTH.JUST_PLANTED:
-				print('just planted')
+#				print('just planted')
 				set_plant_not_harvestable()
 				plant_sprite.animation = 'JustPlanted'
 			GROWTH.GROWTH_1:
-				print('growth1')
+#				print('growth1')
 				set_plant_not_harvestable()
 				plant_sprite.animation = 'Growth1'
 			GROWTH.GROWTH_2:
-				print('growth2')
+#				print('growth2')
 				set_plant_not_harvestable()
 				plant_sprite.animation = 'Growth2'
 			GROWTH.GROWTH_3:
-				print('growth3')
+#				print('growth3')
 				set_plant_not_harvestable()
 				plant_sprite.animation = 'Growth3'
 			GROWTH.FRUIT_GROWTH_1:
-				print('fruit1')
+#				print('fruit1')
 				set_plant_not_harvestable()
 				plant_sprite.animation = 'FruitGrowth1'
 			GROWTH.FRUIT_GROWTH_2:
-				print('fruit2')
+#				print('fruit2')
 				set_plant_not_harvestable()
 				plant_sprite.animation = 'FruitGrowth2'
 			GROWTH.FRUIT_GROWTH_3:
-				print('fruit3')
+#				print('fruit3')
 				set_plant_harvestable()
 				plant_sprite.animation = 'FruitGrowth3'
 		
 func _on_timer_tick():
 	try_grow(this_plant.growth_speed_modifer)
+	print(Chronos.rng_0_to_10())
+#	test()
 	
 func _on_clock_update():
 	pass
