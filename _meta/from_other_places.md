@@ -2,36 +2,49 @@
 
 ## from logseq
 * todo
-* menus
-  * simple menu placeholder
-  * move PC behind world tiles
-* create underground background
-* better jump sound
-* interactive menus
-  * door
-  * chest
-  * npc
-* Ambient noise
-  * single note a la BoTW piano runs
-  * night time
-    * chitchat of foxes
-    * distant grunt of bears foraging
-  * caves
-    * drip
-    * add other cave noises here
-    * footsteps?
-* better tiles for breaking world
-  * world edit mode?
-    * show preview
-    * two buttons for the two available tiles you can modify
-    * show what buttons to press to interact
-    * building
-      * show preview of block to be placed
-      * show button to press to place it at location
-* later
-  * enter top down rooms
-    * tileset
-    * spritesheet
+  * menus
+    * simple menu placeholder
+    * move PC behind world tiles
+  * create underground background
+  * better jump sound
+  * interactive menus
+    * door
+    * chest
+    * npc
+  * Ambient noise
+    * single note a la BoTW piano runs
+    * night time
+      * chitchat of foxes
+      * distant grunt of bears foraging
+    * caves
+      * drip
+      * add other cave noises here
+      * footsteps?
+  * better tiles for breaking world
+    * world edit mode?
+      * show preview
+      * two buttons for the two available tiles you can modify
+      * show what buttons to press to interact
+      * building
+        * show preview of block to be placed
+        * show button to press to place it at location
+  * later
+    * enter top down rooms
+      * tileset
+      * spritesheet
+
+* games tolook for inspiration
+  * ZERO Sievert
+    * procedural generation
+      * choose a biome,gen from there
+    * biomes have their own l oot, buildings, zones, mechanics
+    * hard in a fair way
+      * on death, only lose what you picked up on mission
+      * respawn at beginning of mission: same time, inv, no loss 
+    * progression at home hub
+      * different action against homebase NPCs
+      * player chooses own missions, areas, timescale, everything
+  
 
 ---
 
@@ -82,9 +95,12 @@
     * (ashley gwinnell - procedural puzzles in makenines)[https://youtu.be/51ermvrUKC8]
     * (full indie - art and science of puzzle gen)[https://youtu.be/Mssc0S8GeFI]
     * (GMTK - steal like a game designer)[https://youtu.be/iIOIT3dCy5w]
+    * (curious archive - rainworld's complex ecosystem)[https://youtu.be/GMx8OsTDHfM]
+    * (heartbeast - intro to godot)[https://youtube.com/playlist?list=PL9FzW-m48fn16W1Sz5bhTd1ArQQv4f-Cm]
   * inspo
     * visuals
       * https://lospec.com/gallery/2058/resolution
+      * https://www.reddit.com/r/PixelArt/comments/101djgl/its_a_trap/
     * audio
       * (celeste conversation audio)[https://youtu.be/JIXqmjYF4F4]
       * (magic 8bit plug)[https://ymck.net/app/magical-8bit-plug-en]
