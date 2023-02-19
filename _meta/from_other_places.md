@@ -158,11 +158,41 @@
   * someone left the window open, the raccoon goes in to steal something, the octopus grabs on and they end up in the cave
   * raccoon has 2 cousins, one of which owns a trenchcoat and they go bowling on thursdays
 
-    
+---
 
+### from vikunja
 
-
-
+* visual
+  * context menu art
+    * door
+    * chest
+    * npc
+    * interact menu
+  * interact with object
+  * 9patch art for dialog
+* audio
+  * create PC/NPC voice interactions
+  * update drive folder
+  * create footsteps
+  * create ambient critter sounds
+  * add to game
+    * ambient jingle thing
+    * cave
+    * background music
+    * jump
+    * interact
+    * any other sounds linked in discord or drive
+* mechanics
+  * add animated contect menu icon for interacting with NPC/objects
+  * make gibberish generator from audio snippets for text in dialog boxes
+  * make dialog box w/ writing text that draws from JSON
+  * work on shaders
+  * add controller support
+  * add menu controller support
+  * figure out logic for destructible map tiles
+  * move player behind world tiles
+    * beware the scene transition spectre
+  * add pop-over context menu basic logic
 
 
 
