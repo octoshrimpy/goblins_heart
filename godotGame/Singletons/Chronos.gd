@@ -11,6 +11,7 @@ func _ready():
 		if not is_connected("clock_tick", self, "_on_timer_tick"):
 			connect("clock_tick", self, "_on_timer_tick")
 			print('connected signal')
+			
 	
 func _on_Timer_timeout():
 	print('tick')
