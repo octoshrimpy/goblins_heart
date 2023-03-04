@@ -216,6 +216,7 @@ Events="*res://Events.gd"
 SoundPlayer="*res://Assets/Sounds/SoundPlayer.tscn"
 SceneTransitionRect="*res://SceneTransitionRect.tscn"
 Chronos="*res://Singletons/Chronos.gd"
+Thoth="*res://Singletons/Thoth.gd"
 
 [editor_plugins]
 

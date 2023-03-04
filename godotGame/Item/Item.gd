@@ -19,7 +19,7 @@ var data = {
 }
 
 #Call init after instance to set values
-func init(item_name = 'n/a', hp = 0, mana = 0, 
+func init_item(item_name = 'n/a', hp = 0, mana = 0, 
 	#params continue, line breaks
 			stamina = 0, atk = 0, def = 0, speed = 0, knowledge = 0, 
 			experience = 0, consumable = false, type = ITEM_TYPE.OTHER):
@@ -49,6 +49,7 @@ func init(item_name = 'n/a', hp = 0, mana = 0,
 func get_keys():
 	print(data.keys())
 	return data.keys()
+	
 func get_all_values():
 	print(data.values())
 	return data.values()

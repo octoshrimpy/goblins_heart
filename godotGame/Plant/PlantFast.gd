@@ -1,5 +1,6 @@
 extends Area2D
 
+#onready var Item = preload("res://Item/Item.tscn")
 #var interactable : bool = false
 #var has_berries : bool = false
 
@@ -33,9 +34,11 @@ export var this_plant = {
 	growth_speed_modifer = GROWTH_SPEED.FAST,
 	growth_stage = GROWTH.JUST_PLANTED,
 	interactable = false,
-	has_berries = false,
+	has_berries = true,
 }
-
+func _process(delta):
+	try_harvest()
+	
 func _ready():
 	randomize()
 	#connects to Chronos singleton signals, with a saftey check to avoid memory leaks
@@ -45,6 +48,8 @@ func _ready():
 	if not Chronos.is_connected("clock_updated", self, "_on_clock_update"):
 		Chronos.connect("clock_updated", self, "_on_clock_update")
 		print('connected signal clock updated')
+		
+
 func test():
 	var choice = rng.randi_range(0, 10)
 	print("TEST", 'var:', choice, 'raw:', Chronos.rng_0_to_10())
@@ -81,7 +86,27 @@ func try_grow(speed : int) -> void:
 				print('Invalid Enum value for plant_stage_type / GROWTH_SPEED')
 	else: 
 		print('no luck this time, tick')
+#NEW STUFF-------------------------------------------------------------------------#
+enum ITEM_TYPE {CONSUMABLE, WEAPON, ARMOR, TECH, OTHER}
+func make_blue_berry():
+#	var new_item = Item.instance()
+#	new_item.init_item('blue_berry', 5, 5, 5, 0, 0, 0, 0, 0, true, ITEM_TYPE.CONSUMABLE)
+	var blue_berry = Thoth.make_item('blue_berry', 5, 5, 5, 0, 0, 0, 0, 0, true, ITEM_TYPE.CONSUMABLE)
+	return blue_berry
 	
+func try_harvest():
+	#if not this_plant.interactable: return
+	if not this_plant.has_berries: return
+	if Input.is_action_just_pressed("ui_accept"):
+		this_plant.has_berries = false
+		harvest_blue_berry()
+		
+func harvest_blue_berry():
+	var harvest_item = make_blue_berry()
+	#add to inv: use string to access consumable, weapon, armor, tech
+#	Thoth.add_to_player_inventory('consumable', harvest_item)
+	Thoth.add_to_player_inventory(harvest_item, 'consumable')
+#--------------------------------------------------------------------------------#
 func _on_Plant_body_entered(body):
 	if body is Player:
 		this_plant.interactable = true

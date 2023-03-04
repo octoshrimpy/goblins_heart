@@ -1,7 +1,5 @@
 extends Node2D
 
-onready var timer = $Timer
-
 #item type enum
 enum ITEM_TYPE {CONSUMABLE, WEAPON, ARMOR, TECH, OTHER}
 #export (PackedScene) var Item
@@ -34,6 +32,24 @@ var player = {
 		tech = []
 	}
 }
+
+#get internal player dict/obj, returns whole object
+func _get_player():
+	return player
+
+func add_to_player_inventory(item, type):
+	player['inventory'][type].push_back(item)
+	print('current_inventory: ', player['inventory'])
+	
+func make_item(item_name = 'n/a', hp = 0, mana = 0, 
+	#params continue, line breaks
+			stamina = 0, atk = 0, def = 0, speed = 0, knowledge = 0, 
+			experience = 0, consumable = false, type = ITEM_TYPE.OTHER):
+	var new_item = Item.instance()
+	new_item.init_item(item_name, hp, mana, stamina, atk, def, speed, knowledge, experience, consumable, type)
+	print('new_item check: ', new_item)
+	return new_item
+
 #This is just to test my item instancing is working and unique
 func make_items():
 	var test_item1 = Item.instance()
@@ -42,21 +58,21 @@ func make_items():
 	test_item2.init('test2')
 	return [test_item2.data, test_item1.data]
 #
+
+func test_items_unique():
+	var items = make_items()
+	print('item1:', items[0])
+	print('item2:', items[1])
+	var test_item3 = Item.instance()
+	test_item3.init()
+	test_item3.get_value('item_name')
+	test_item3.set_value('item_name', 'test success!')
+	test_item3.get_value('item_name')
+	test_item3.get_keys()
+	test_item3.get_size()
+	
 func _ready():
 	pass
-#	var items = make_items()
-#	print('item1:', items[0])
-#	print('item2:', items[1])
-#	var test_item3 = Item.instance()
-#	test_item3.init()
-#	test_item3.get_value('item_name')
-#	test_item3.set_value('item_name', 'test success!')
-#	test_item3.get_value('item_name')
-#	test_item3.get_keys()
-#	test_item3.get_size()
 	
-func _on_Timer_timeout():
-	print('time timeout happened!')
-	Chronos.test_me()
 
 
