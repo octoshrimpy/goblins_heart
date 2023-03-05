@@ -1,5 +1,7 @@
 extends Node
 
+onready var default_texture = preload("res://icon.png")
+
 #item type enum
 enum ITEM_TYPE {CONSUMABLE, WEAPON, ARMOR, TECH, OTHER}
 
@@ -15,14 +17,15 @@ var data = {
 	experience = 0,
 	consumable = false,
 	#All lower case versions of enum, 0 - 4
-	type = 'other'
+	type = 'other',
+	texture = default_texture
 }
 
 #Call init after instance to set values
 func init_item(item_name = 'n/a', hp = 0, mana = 0, 
 	#params continue, line breaks
 			stamina = 0, atk = 0, def = 0, speed = 0, knowledge = 0, 
-			experience = 0, consumable = false, type = ITEM_TYPE.OTHER):
+			experience = 0, consumable = false, type = ITEM_TYPE.OTHER, texture = default_texture):
 	#set properties based on default values or provided arguments
 	var type_conversion = ''
 	match type:
@@ -44,6 +47,8 @@ func init_item(item_name = 'n/a', hp = 0, mana = 0,
 	data.experience = experience
 	data.consumable = consumable
 	data.type = type_conversion
+	data.texture = texture
+	
 	
 #-----------# adds methods for internal object dictionary #---------------------#
 func get_keys():

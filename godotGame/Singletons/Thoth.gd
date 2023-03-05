@@ -4,7 +4,7 @@ extends Node2D
 enum ITEM_TYPE {CONSUMABLE, WEAPON, ARMOR, TECH, OTHER}
 #export (PackedScene) var Item
 onready var Item = preload("res://Item/Item.tscn")
-
+onready var default_texture = preload("res://icon.png")
 #Sample Item(s):
 #onready var test_item1 = Item.instance()
 #onready var test_item2 = Item.instance().init('test2', 2, 2, 2, 2, 2, 2, 2, true, ITEM_TYPE.OTHER)
@@ -32,8 +32,18 @@ var player = {
 		tech = []
 	}
 }
-
+func _get_text_inventory():
+	return player.inventory
 #get internal player dict/obj, returns whole object
+
+func _get_inventory_item_names(inventory):
+	for item in inventory.consumable:
+		print(item.data)
+#	print(inventory.values())
+#	print(inventory.consumable)
+	
+#	return Array(inventory.values())
+
 func _get_player():
 	return player
 
@@ -44,9 +54,9 @@ func add_to_player_inventory(item, type):
 func make_item(item_name = 'n/a', hp = 0, mana = 0, 
 	#params continue, line breaks
 			stamina = 0, atk = 0, def = 0, speed = 0, knowledge = 0, 
-			experience = 0, consumable = false, type = ITEM_TYPE.OTHER):
+			experience = 0, consumable = false, type = ITEM_TYPE.OTHER, texture = default_texture):
 	var new_item = Item.instance()
-	new_item.init_item(item_name, hp, mana, stamina, atk, def, speed, knowledge, experience, consumable, type)
+	new_item.init_item(item_name, hp, mana, stamina, atk, def, speed, knowledge, experience, consumable, type, texture)
 	print('new_item check: ', new_item)
 	return new_item
 
@@ -74,5 +84,7 @@ func test_items_unique():
 func _ready():
 	pass
 	
-
+func _process(delta):
+	if Input.is_action_just_pressed("ui_select"):
+		_get_inventory_item_names(_get_text_inventory())
 

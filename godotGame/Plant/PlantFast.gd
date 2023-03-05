@@ -7,6 +7,9 @@ extends Area2D
 var time_track_for_plant : int = 0
 var last_picked : int = 0
 
+#texture for berries or whatever harvestable it will have
+onready var harvestable_texture = preload("res://Assets/Sprites/PlaceholderInteract.png")
+
 onready var plant_sprite = $Plant6StageGrowth
 #--------------#RNG#-------------------------------------------------#
 var rng = RandomNumberGenerator.new()
@@ -29,12 +32,14 @@ enum GROWTH_STAGES {
 	THREE_STAGE
 }
 
-export var this_plant = {
+var this_plant = {
 	stage_type = GROWTH_STAGES.SIX_STAGE,
 	growth_speed_modifer = GROWTH_SPEED.FAST,
 	growth_stage = GROWTH.JUST_PLANTED,
 	interactable = false,
-	has_berries = true,
+	has_berries = false,
+	harvestable_texture = harvestable_texture,
+	player_proximity = false
 }
 func _process(delta):
 	try_harvest()
@@ -44,29 +49,29 @@ func _ready():
 	#connects to Chronos singleton signals, with a saftey check to avoid memory leaks
 	if not Chronos.is_connected("clock_tick", self, "_on_timer_tick"):
 		Chronos.connect("clock_tick", self, "_on_timer_tick")
-		print('connected signal clock tick')
+#		print('connected signal clock tick')
 	if not Chronos.is_connected("clock_updated", self, "_on_clock_update"):
 		Chronos.connect("clock_updated", self, "_on_clock_update")
-		print('connected signal clock updated')
+#		print('connected signal clock updated')
 		
 
 func test():
 	var choice = rng.randi_range(0, 10)
-	print("TEST", 'var:', choice, 'raw:', Chronos.rng_0_to_10())
+#	print("TEST", 'var:', choice, 'raw:', Chronos.rng_0_to_10())
 	
 func rng_0_to_10() -> int:
 	var choice : int = Chronos.rng_0_to_10()
-	print('first roll: ', choice)
+#	print('first roll: ', choice)
 	return choice
 
 func randomized_growth_success_roll() -> bool:
 	var choice : int = Chronos.rng_0_to_10()
-	print('random growth roll: ', choice)
+#	print('random growth roll: ', choice)
 	return (choice > 3)
 	
 func slow_grow_speed_success_check() -> bool:
 	var choice : int = Chronos.rng_0_to_10()
-	print('slow grow check: ', choice)
+#	print('slow grow check: ', choice)
 	return choice > 3
 
 func try_grow(speed : int) -> void:
@@ -88,32 +93,38 @@ func try_grow(speed : int) -> void:
 		print('no luck this time, tick')
 #NEW STUFF-------------------------------------------------------------------------#
 enum ITEM_TYPE {CONSUMABLE, WEAPON, ARMOR, TECH, OTHER}
-func make_blue_berry():
+func make_red_berry():
 #	var new_item = Item.instance()
 #	new_item.init_item('blue_berry', 5, 5, 5, 0, 0, 0, 0, 0, true, ITEM_TYPE.CONSUMABLE)
-	var blue_berry = Thoth.make_item('blue_berry', 5, 5, 5, 0, 0, 0, 0, 0, true, ITEM_TYPE.CONSUMABLE)
-	return blue_berry
+	var red_berry = Thoth.make_item('red_berry', 5, 5, 5, 0, 0, 0, 0, 0, true, ITEM_TYPE.CONSUMABLE, harvestable_texture)
+	return red_berry
 	
 func try_harvest():
-	#if not this_plant.interactable: return
+	if not this_plant.interactable: return
 	if not this_plant.has_berries: return
-	if Input.is_action_just_pressed("ui_accept"):
-		this_plant.has_berries = false
-		harvest_blue_berry()
-		
-func harvest_blue_berry():
-	var harvest_item = make_blue_berry()
+	#------------#enable on individual scripts#------------------------#
+#	if Input.is_action_just_pressed("ui_accept") and this_plant.has_berries == true and this_plant.player_proximity == true:
+#		harvest_red_berry()
+#		set_plant_not_harvestable()
+#		this_plant.has_berries = false
+#		this_plant.growth_stage = GROWTH.GROWTH_3
+#		update_size_6_stage()
+	#------------------------------------------------------------------#
+func harvest_red_berry():
+	var harvest_item = make_red_berry()
 	#add to inv: use string to access consumable, weapon, armor, tech
 #	Thoth.add_to_player_inventory('consumable', harvest_item)
 	Thoth.add_to_player_inventory(harvest_item, 'consumable')
 #--------------------------------------------------------------------------------#
 func _on_Plant_body_entered(body):
 	if body is Player:
-		this_plant.interactable = true
+#		this_plant.interactable = true
+		this_plant.player_proximity = true
 
 func _on_Plant_body_exited(body):
 	if body is Player:
-		this_plant.interactable = false
+#		this_plant.interactable = false
+		this_plant.player_proximity = false
 		
 func set_plant_harvestable():
 	this_plant.has_berries = true
@@ -145,34 +156,41 @@ func update_size_6_stage():
 #				print('just planted')
 				set_plant_not_harvestable()
 				plant_sprite.animation = 'JustPlanted'
+				this_plant.interactable = false
 			GROWTH.GROWTH_1:
 #				print('growth1')
 				set_plant_not_harvestable()
 				plant_sprite.animation = 'Growth1'
+				this_plant.interactable = false
 			GROWTH.GROWTH_2:
 #				print('growth2')
 				set_plant_not_harvestable()
 				plant_sprite.animation = 'Growth2'
+				this_plant.interactable = false
 			GROWTH.GROWTH_3:
 #				print('growth3')
 				set_plant_not_harvestable()
 				plant_sprite.animation = 'Growth3'
+				this_plant.interactable = false
 			GROWTH.FRUIT_GROWTH_1:
 #				print('fruit1')
 				set_plant_not_harvestable()
 				plant_sprite.animation = 'FruitGrowth1'
+				this_plant.interactable = false
 			GROWTH.FRUIT_GROWTH_2:
 #				print('fruit2')
 				set_plant_not_harvestable()
 				plant_sprite.animation = 'FruitGrowth2'
+				this_plant.interactable = false
 			GROWTH.FRUIT_GROWTH_3:
 #				print('fruit3')
 				set_plant_harvestable()
 				plant_sprite.animation = 'FruitGrowth3'
+				this_plant.interactable = true
 		
 func _on_timer_tick():
 	try_grow(this_plant.growth_speed_modifer)
-	print(Chronos.rng_0_to_10())
+#	print(Chronos.rng_0_to_10())
 #	test()
 	
 func _on_clock_update():

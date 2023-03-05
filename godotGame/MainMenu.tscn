@@ -75,7 +75,7 @@ position = Vector2( 200, 392 )
 scale = Vector2( 8.8125, 8.64583 )
 frames = SubResource( 11 )
 animation = "Run"
-frame = 6
+frame = 8
 playing = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
