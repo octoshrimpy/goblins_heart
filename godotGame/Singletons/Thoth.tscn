@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Singletons/Thoth.gd" type="Script" id=1]
+
+[node name="Thoth" type="Node2D"]
+position = Vector2( 587, 252 )
+script = ExtResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
