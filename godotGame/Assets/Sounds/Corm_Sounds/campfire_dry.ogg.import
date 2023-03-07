@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/campfire_dry.ogg-f556ed7ab9821c8c1ba9b1e5e8c1e1af.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Corm_Sounds/campfire_dry.ogg"
+dest_files=[ "res://.import/campfire_dry.ogg-f556ed7ab9821c8c1ba9b1e5e8c1e1af.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
